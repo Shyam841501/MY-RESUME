@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shyam Kumar Mishra - AI & ML Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a4365;
+            --secondary: #4299e1;
+            --accent: #e53e3e;
+            --light: #ebf8ff;
+            --dark: #1a365d;
+            --text: #2d3748;
+            --text-light: #718096;                                                                                                                                                                                                                                                                                                                                                                                                                                  
+        }                                                                 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f7fafc;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .resume {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 3rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 1.5rem;
+            display: block;
+            position: relative;
+            z-index: 2;
+            background-color: #ddd; /* Placeholder color */
+            /* Replace with your image by adding: background-image: url('your-image.jpg'); */
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom right, transparent 49%, white 50%);
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+        }
+        
+        .contact-info a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .contact-info i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 3rem 2rem;
+            position: relative;
+            margin-top: 30px;
+        }
+        
+        .left-column {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .right-column {
+            flex: 2;
+            min-width: 300px;
+            padding-left: 2rem;
+            border-left: 1px solid #e2e8f0;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .about-text {
+            text-align: justify;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .skill-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.4);
+        }
+        
+        .education-item, 
+        .experience-item, 
+        .project-item, 
+        .award-item,
+        .volunteer-item {
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+        
+        .education-item::before,
+        .experience-item::before,
+        .project-item::before,
+        .award-item::before,
+        .volunteer-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--secondary);
+        }
+        
+        .education-item::after,
+        .experience-item::after,
+        .project-item::after,
+        .award-item::after,
+        .volunteer-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 17px;
+            bottom: -25px;
+            width: 2px;
+            background: #e2e8f0;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .item-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+        
+        .item-date {
+            color: var(--secondary);
+            font-weight: 500;
+            background: var(--light);
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        .item-subtitle {
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+        
+        .item-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .item-description ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .item-description li {
+            margin-bottom: 0.4rem;
+        }
+        
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .language-name {
+            font-weight: 500;
+        }
+        
+        .language-level {
+            color: var(--text-light);
+            font-style: italic;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            margin-top: 0.3rem;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .contact-info {
+                gap: 0.8rem;
+            }
+            
+            .contact-info a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .main-content {
+                padding: 2rem 1rem;
+                flex-direction: column;
+                margin-top: 20px;
+            }
+            
+            .left-column, .right-column {
+                padding: 0;
+                flex: 100%;
+            }
+            
+            .right-column {
+                border-left: none;
+                border-top: 1px solid #e2e8f0;
+                padding-top: 2rem;
+                margin-top: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="resume">
+            <div class="header">
+                <!-- Profile Image - Replace with your actual image -->
+            
+                <img src="my profile.jpg" alt="Shyam Kumar Mishra" class="profile-image">
+
+                <h1>Shyam Kumar Mishra</h1>
+                <p>AI & Machine Learning Engineering Student</p>
+                <div class="contact-info">
+                    <a href="er.shyammishra2468@example.com"><i class="fas fa-envelope"></i> er.shyammishra2468@example.com</a>
+                    <a href="tel:9661199744"><i class="fas fa-phone"></i> +91 9661199744</a>
+                    <a href="https://www.linkedin.com/in/shyam-mishra-4669562a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/shyam-mishra</a>
+                    <a href="https://github.com/Shyam841501/shyam-mishra" target="_blank"><i class="fab fa-github"></i> github.com/shyam-mishra</a>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="left-column">
+                    <div class="section">
+                        <h2 class="section-title">About Me</h2>
+                        <p class="about-text">
+                            Passionate AI/ML student with expertise in developing intelligent systems and solving complex problems. 
+                            Currently pursuing B.Tech in Artificial Intelligence & Machine Learning at Government Engineering College, 
+                            Kishanganj. Strong foundation in machine learning algorithms, deep learning architectures, and data analysis. 
+                            Committed to continuous learning and applying cutting-edge AI solutions to real-world challenges.
+                        </p>
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title">Skills</h2>
+                        <div class="skills-container">
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">Java script</span>
+                            <span class="skill-tag">Python</span>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title">Languages</h2>
+                        <div class="language-item">
+                            <div>
+                                <div class="language-name">Hindi</div>
+                                <div class="language-level">Native</div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="language-item">
+                            <div>
+                                <div class="language-name">English</div>
+                                <div class="language-level">Professional</div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-column">
+                    <div class="section">
+                        <h2 class="section-title">Education</h2>
+                        <div class="education-item">
+                            <div class="item-header">
+                                <div class="item-title">Government Engineering College, Kishanganj</div>
+                                <div class="item-date">2023 - 2027</div>
+                            </div>
+                            <div class="item-subtitle">B.Tech in Artificial Intelligence & Machine Learning</div>
+                            <div class="item-description">
+                                <p>Bihar Engineering University</p>
+            
+                                <p><strong>Relevant Coursework:</strong></p>
+                                <ul>
+                                    <li>Machine Learning & Pattern Recognition</li>
+                                    <li>Deep Learning & Neural Networks</li>
+                                    <li>Natural Language Processing</li>
+                                    <li>Computer Vision & Image Processing</li>
+                                    <li>Big Data Analytics</li>
+                                    <li>Probability & Statistics for AI</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title">Experience</h2>
+                        <div class="experience-item">
+                            <div class="item-header">
+                                <div class="item-title">ISRO Intern</div>
+                                <div class="item-date">April 5-9, 2024</div>
+                            </div>
+                            <div class="item-subtitle">Geospatial Analysis using Google Earth Engine – ISRO (IIRS), Dehradun</div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Gained hands-on experience with Google Earth Engine for geospatial data analysis</li>
+                                    <li>Learned techniques for remote sensing and spatial data visualization.</li>
+                                    <li>Collaborated with senior researchers on improving model efficiency</li>
+                                    <li>Explored applications of GIS in environmental and urban studies.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="experience-item">
+                            <div class="item-header">
+                                <div class="item-title">ISRO Intern</div>
+                                <div class="item-date">May 19-23, 2024</div>
+                            </div>
+                            <div class="item-subtitle">Exploring Earth's Moon through Chandrayaan – ISRO (IIRS), Dehradun</div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Studied lunar exploration missions and findings from Chandrayaan</li>
+                                    <li>Understood the significance of remote sensing in planetary studies.</li>
+                                    <li>Analyzed lunar surface composition and geological features</li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="item-header">
+                                <div class="item-title">GUVI, IIT MADRAS</div>
+                                <div class="item-date">August 15, 2023</div>
+                            </div>
+                            <div class="item-subtitle">Python certification course from GUVI</div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Successfully completed a Python certification course from GUVI, gaining proficiency in core Python concepts.</li>
+                                    <li>Developed hands-on experience in Python programming, including data structures, loops, functions, and OOP concepts.</li>
+                                    <li>Worked on real-world projects and coding exercises, improving problem-solving and debugging skills.</li>
+                                    <li>Learned best practices for writing efficient and clean code following industry standards.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="item-header">
+                                <div class="item-title">Drone Bootcamp, IIT (ISM) Dhanbad </div>
+                                <div class="item-date">April 5-9, 2024</div>
+                            </div>
+                            <div class="item-subtitle"> Bootcamp on Electronics for Unmanned Aerial Systems, Sensors, and Communication</div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Successfully participated in a Bootcamp on Electronics for Unmanned Aerial Systems, Sensors, and Communication organized by IIT (ISM) Dhanbad at GEC Kishanganj under the Ministry of Electronics & Information Technology.</li>
+                                    <li>Gained hands-on experience in sensor technology, aerial communication systems, and unmanned aerial vehicles (UAVs).</li>
+                                    <li>Developed knowledge in electronics, wireless communication, and drone technologies.  </li>
+                                    <li>Explored real-world applications of aerial systems in various industries.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="item-header">
+                                <div class="item-title">Linkedin Intern</div>
+                                <div class="item-date">April 24, 2024</div>
+                            </div>
+                            <div class="item-subtitle">LinkedIn Learning - Career Essentials in Generative AI (Microsoft Collaboration)</div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Gained certified expertise in key AI domains including Computer Ethics and Generative AI principles. </li>
+                                    <li>Enhanced ability to apply ethical AI practices in technical solutions.</li>
+                                    <li>Developed practical understanding of Microsoft's AI implementation frameworks.</li>
+                                    <li>Earned verifiable certification (ID: e4a3c2e44c...e2) demonstrating AI competency.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title">Projects</h2>
+                      <!--  <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Pong Game</div>
+                                <div class="item-date">(Python, Pygame)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Designed and coded a classic Pong game using Python’s Pygame library.</li>
+                                    <li>Implemented smooth gameplay mechanics with AI-controlled opponent mode.</li>
+          
+                                </ul>
+                            </div>
+                        </div>-->
+                        
+                        
+                       <!-- <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Rank-Based Percentile Calculator</div>
+                                <div class="item-date"> (Python)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Developed a tool to calculate percentile rankings based on user inputs.</li>
+                                    <li>Applied statistical formulas for accurate percentile calculations.</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>-->
+                       <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Simple Calculator</div>
+                                <div class="item-date">(Python, Tkinter)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Created a GUI-based basic calculator for arithmetic operations.</li>
+                                    <li>Integrated a responsive design for ease of use.</li>
+                                   
+                                </ul>
+                            </div>
+                        </!<div>
+
+                        <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Digital Clock</div>
+                                <div class="item-date">(Python, Tkinter)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Developed a real-time digital clock with date and time display. </li>
+                                    <li>Used Tkinter to create a visually appealing interface.</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+
+                       <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Resume Web Page</div>
+                                <div class="item-date">(HTML, CSS)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Created a digital version of my resume using HTML and CSS. The project highlights my education, skills, and project experience in a clean, professional format. Implemented proper semantic elements and styling to enhance readability and presentation.</li>
+                                
+                                    
+                                </ul>
+                            </div>
+                        </!<div>
+
+                       <!-- <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Age Calculator </div>
+                                <div class="item-date">(Python)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Built an age calculator that takes birthdate input and computes the exact age.</li>
+                                    <li>Designed an intuitive interface for user interaction.</li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Calendar Application</div>
+                                <div class="item-date"> (Python)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Created a simple calendar application using Python’s built-in libraries.</li>
+                                    <li>Enabled users to view any year’s calendar dynamically.</li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Compound Interest Calculator </div>
+                                <div class="item-date"> (Python)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Developed a Python-based calculator to compute compound interest with user inputs.</li>
+                                    <li>Integrated a user-friendly interface for seamless calculations. </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Indian Flag in Python</div>
+                                <div class="item-date">(Python, Turtle)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Created a digital representation of the Indian flag using Python’s Turtle module. </li>
+                                    <li>Implemented precise color and design elements to match the national flag specifications. </li>
+                                </ul>
+                            </div>
+                        </div>-->
+
+                        <div class="project-item">
+                            <div class="item-header">
+                                <div class="item-title">Portfolio Website</div>
+                                <div class="item-date">(HTML, CSS, JavaScript)</div>
+                            </div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Developed a responsive portfolio website showcasing projects and skills.</li>
+                                    <li>Implemented interactive UI elements and animations using JavaScript.</li>
+                                    <li>Ensured cross-browser compatibility and optimized performance.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h2 class="section-title">Honors & Awards</h2>
+                        <div class="award-item">
+                           <!-- <div class="item-header">
+                                <div class="item-title">Mister Fresher</div>
+                                <div class="item-date">2023</div>
+                            </div>
+                            <div class="item-subtitle">Government Engineering College, Kishanganj</div>
+                            <div class="item-description">
+                                <p>Awarded the prestigious "Mister Fresher" title in my college, recognizing leadership, personality, and active participation in campus activities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="award-item">-->
+                            <div class="item-header">
+                                <div class="item-title">District-Level Science Fair Winner</div>
+                                <div class="item-date">2023</div>
+                            </div>
+                            <div class="item-subtitle">Thematic science competition, Kishanganj</div>
+                            <div class="item-description">
+                                <p>Secured a top position in a thematic science competition at the district level, showcasing innovative project presentation and technical skills.</p>
+                            </div>
+                        </div>
+
+                        <div class="award-item">
+                            <div class="item-header">
+                                <div class="item-title">Startup Idea Competition (2nd Rank)</div>
+                                <div class="item-date">2023</div>
+                            </div>
+                            <div class="item-subtitle">Government Engineering College, Kishanganj, BEU</div>
+                            <div class="item-description">
+                                <p>Achieved 2nd place in a college-level startup pitch competition for a creative and scalable business idea, judged by industry experts.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+               <!--     <div class="section">
+                        <h2 class="section-title">Volunteer Experience</h2>
+                        <div class="volunteer-item">
+                            <div class="item-header">
+                                <div class="item-title">Science Mela Youth Fest – Organizer & Volunteer</div>
+                                <div class="item-date"> October 2024</div>
+                            </div>
+                            <div class="item-subtitle">Government Engineering College Kishanganj</div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Contributed to the organization and execution of the Science Mela Youth Fest.</li>
+                                    <li>Assisted in event planning, participant coordination, and technical support.</li>
+                                    <li>Promoted scientific enthusiasm among students through exhibitions and activities.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="volunteer-item">
+                            <div class="item-header">
+                                <div class="item-title">Anchoring & Hosting – Various College Events</div>
+                                <div class="item-date">2023 - 2025</div>
+                            </div>
+                            <div class="item-subtitle">Government Engineering College Kishanganj</div>
+                            <div class="item-description">
+                                <ul>
+                                    <li>Hosted and anchored multiple college events, including the 15th August Independence Day celebration, 5th September Teacher’s Day event, and Induction Program.</li>
+                                    <li>Created engaging bilingual anchoring scripts (Hindi & English) for smooth event flow.</li>
+                                    <li>Engaged the audience with humor, enthusiasm, and a well-structured script.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</body>
+</html>
